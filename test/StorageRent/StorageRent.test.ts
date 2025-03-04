@@ -154,6 +154,22 @@ describe("calculateMonthlyRent function", () => {
 
     // NEW tests
 
+    it("should throw error if leaseStartDate is not before windowEndDate", () => {
+        const baseMonthlyRent = 100.00;
+        const leaseStartDate = new Date("2023-03-15T00:00:00");
+        const windowStartDate = new Date("2023-01-01T00:00:00");
+        const windowEndDate = new Date("2023-02-01T00:00:00");
+        const dayOfMonthRentDue = 1;
+        const rentRateChangeFrequency = 1;
+        const rentChangeRate = -.1;
+
+        expect(() => {
+            calculateMonthlyRent(baseMonthlyRent,
+                leaseStartDate, windowStartDate, windowEndDate,
+                dayOfMonthRentDue, rentRateChangeFrequency, rentChangeRate)
+        }).toThrow("Lease start date should occur before window end date.");
+    });
+
     it("should return MonthlyRentRecords when rentChangeRate is negative", () => {
 
         const baseMonthlyRent = 100.00;
