@@ -109,7 +109,7 @@ export function calculateNextRentDueDate(date: Date, rentDueDay: number, include
  * @param leaseStartDate The date the lease begins (Date)
  * @param rentDueDay The next rent due day (Number)
  * @returns The prorated rent amount (Number)
- */
+ */ 
 export function calculateProratedRent(monthlyRent: number, leaseStartDate: Date, rentDueDay: number): number {
     const daysPerMonth = 30;
     const monthBegining = new Date(leaseStartDate.getFullYear(), leaseStartDate.getMonth(), 1);
@@ -117,8 +117,7 @@ export function calculateProratedRent(monthlyRent: number, leaseStartDate: Date,
 
     let occupiedDaysProportion: number;
 
-    if (monthBegining.toISOString() === leaseStartDate.toISOString()) return format(monthlyRent);
-
+    if (rentDueDate.toISOString() === leaseStartDate.toISOString()) return format(monthlyRent);
 
     if (leaseStartDate < rentDueDate)
         occupiedDaysProportion = (rentDueDate.getDate() - leaseStartDate.getDate()) / daysPerMonth;  // lease starts before the rent due date

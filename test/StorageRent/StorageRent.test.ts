@@ -152,7 +152,7 @@ describe("calculateMonthlyRent function", () => {
         expect(result).toEqual(expectedResult);
     });
 
-    // NEW itS
+    // NEW tests
 
     it("should return MonthlyRentRecords when rentChangeRate is negative", () => {
 
